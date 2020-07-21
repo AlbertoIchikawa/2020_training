@@ -13,7 +13,10 @@ def hello() -> str:
 def do_search() -> str:
     phrase = request.form['phrase']
     letters = request.form['letters']
-    return str(search4letters(phrase, letters))
+    title = '検索結果:'
+    results = str(search4letters(phrase, letters))
+    return render_template('results.html', the_phrase=phrase, the_letters=letters, the_title=title,
+                           the_results=results, )
 
 
 @app.route('/entry')
