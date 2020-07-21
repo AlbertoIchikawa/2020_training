@@ -6,11 +6,11 @@ app = Flask(__name__)
 
 def log_request(req: 'flask_request', res: str) -> None:
     with open('vsearch.log', 'a') as log:
-        print(req.form, req.remote_addr, req.user_agent, res, file=log, end='|')
+        print(req.form, req.remote_addr, req.user_agent, res, file=log, sep='|')
 
 
 @app.route('/search4', methods=['POST'])
-def do_search() -> str:
+def do_search() -> 'html':
     phrase = request.form['phrase']
     letters = request.form['letters']
     title = '検索結果:'
@@ -22,19 +22,23 @@ def do_search() -> str:
 
 @app.route('/')
 @app.route('/entry')
-def entry_page() -> str:
+def entry_page() -> 'html':
     return render_template('entry.html', the_title='Web版のsearch4lettersにようこそ！')
 
 
 @app.route('/viewlog')
-def view_the_log() -> str:
+def view_the_log() -> 'html':
     contents = []
     with open('vsearch.log') as log:
         for line in log:
             contents.append([])
             for item in line.split('|'):
                 contents[-1].append(escape(item))
-    return str(contents)
+    titles = ('フォームデータ', 'リモートアドレス', 'ユーザエージェント', '結果')
+    return render_template('viewlog.html',
+                           the_title='ログの閲覧',
+                           the_row_titles=titles,
+                           the_data=contents, )
 
 
 if __name__ == '__main__':
