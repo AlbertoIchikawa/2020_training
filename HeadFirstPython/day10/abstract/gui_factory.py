@@ -13,7 +13,7 @@ class GUIFactory(metaclass=ABCMeta):
     @abstractmethod
     def create_checkbox(self):
         pass
-    
+
 
 class WinFactory(GUIFactory):
     def __init__(self):
