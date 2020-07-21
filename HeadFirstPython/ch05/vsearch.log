@@ -2,3 +2,5 @@
 <Request 'http://127.0.0.1:5000/search4' [POST]> {'e', 'u', 'i', 'a'}
 <Request 'http://127.0.0.1:5000/search4' [POST]> {'e', 'u', 'i', 'a'}
 <Request 'http://127.0.0.1:5000/search4' [POST]> {'x', 'y'}
+<Request 'http://127.0.0.1:5000/search4' [POST]> {'i', 'e', 'a', 'u'}
+<Request 'http://127.0.0.1:5000/search4' [POST]> {'i', 'e'}
