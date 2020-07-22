@@ -1,7 +1,11 @@
 from flask import Flask, render_template, request, escape
 from vsearch import search4letters
 
+from ch05.DBcm import UseDatabase
+
 app = Flask(__name__)
+
+import mysql.connector
 
 
 def log_request(req: 'flask_request', res: str) -> None:
@@ -9,9 +13,8 @@ def log_request(req: 'flask_request', res: str) -> None:
                 'user': 'vsearch',
                 'password': 'vsearchpasswd',
                 'database': 'vsearchlogDB', }
-    import mysql.connector
-    conn = mysql.connector.connect(**dbconfig)
-    cursor = conn.cursor()
+    with UseDatabase(dbconfig) as cursor:
+
     _SQL = """insert into log (phrase, letters, ip, browser_string, results) values(%s, %s, %s, %s, %s)"""
     cursor.execute(_SQL, (req.form['phrase'],
                           req.form['letters'],
