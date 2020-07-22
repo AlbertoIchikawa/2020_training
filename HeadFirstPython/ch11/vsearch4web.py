@@ -6,7 +6,7 @@ from DBcm import UseDatabase
 app = Flask(__name__)
 
 app.config['dbconfig'] = {'host': '127.0.0.1',
-                          'user': 'vsearch',
+                          'user': 'vsearchworng',
                           'password': 'vsearchpasswd',
                           'database': 'vsearchlogDB', }
 
