@@ -1,28 +1,39 @@
 from flask import Flask, render_template, request, escape
 from vsearch import search4letters
 
-from DBcm import UseDatabase
+from DBcm import UseDatabase, ConnectionError, CredentialsError, SQLError
 
 app = Flask(__name__)
 
 app.config['dbconfig'] = {'host': '127.0.0.1',
-                          'user': 'vsearchworng',
+                          'user': 'vsearch',
                           'password': 'vsearchpasswd',
                           'database': 'vsearchlogDB', }
 
 
 def log_request(req: 'flask_request', res: str) -> None:
     """Webリクエストの詳細と結果をロギングする。"""
-    with UseDatabase(app.config['dbconfig']) as cursor:
-        _SQL = """insert into log
+    # insertがinsertsになっているのでSQLError例外が起こるようにした。
+    try:
+        with UseDatabase(app.config['dbconfig']) as cursor:
+            _SQL = """inserts into log
          (phrase, letters, ip, browser_string, results)
           values
           (%s, %s, %s, %s, %s)"""
-        cursor.execute(_SQL, (req.form['phrase'],
-                              req.form['letters'],
-                              req.remote_addr,
-                              req.user_agent.browser,
-                              res,))
+            cursor.execute(_SQL, (req.form['phrase'],
+                                  req.form['letters'],
+                                  req.remote_addr,
+                                  req.user_agent.browser,
+                                  res,))
+
+    except ConnectionError as err:
+        print('データベースが動作していますか？エラー：', str(err))
+    except CredentialsError as err:
+        print('ユーザID/パスワード問題。エラー：', str(err))
+    except SQLError as err:
+        print('クエリは正しいですか？エラー：', str(err))
+    except Exception as err:
+        print('何か問題がはっせいしました。', str(err))
 
 
 @app.route('/search4', methods=['POST'])
@@ -61,4 +72,4 @@ def view_the_log() -> 'html':
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
