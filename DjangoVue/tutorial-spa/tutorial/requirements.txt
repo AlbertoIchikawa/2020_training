@@ -1,2 +1,4 @@
 Django
-djangorestframework
+djangorestframework'django-cors-headers' 
+djangorestframework_camel_case 
+djangorestframework-jwt 
