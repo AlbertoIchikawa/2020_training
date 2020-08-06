@@ -1,0 +1,98 @@
+What is DBMS?
+データベース管理システムのこと。データベースの構築、管理を行うシステムのこと。データの追加、更新、削除などを効率的に行えるような管理をする。
+
+
+What is RDBMS?
+リレーショナルデータベース管理システムのこと。行と列の表（テーブル）の形で示す。
+
+
+What is SQL?
+SQLはRDBMSの管理や操作を行うための言語のひとつ。
+
+
+What is a Database?
+データベースは一定の形式で作成され、管理されたデータの集合のこと。
+
+
+What are tables and Fields?
+テーブルは内部が格子状に分かれた表のことをいう。フィールドはエクセルでいうセルに相当する。レコードの要素のひとつに当たる入力項目がフィールド。
+
+
+What is a primary key?
+テーブル内でレコードを一意（他と重複しない）に識別することができるように指定される項目。
+
+
+What is a unique key?
+テーブルにデータを追加・更新する際の制約の一つ。その列の中でデータが一意（他と重複しない）でなければならないという制約。nullが存在可能。
+
+
+What is a foreign key?
+外部キーは整合性を保ちたい列に設定する。複数のテーブルで関連付けしたい場合に使う。
+
+
+How do we use the DISTINCT statement? What is its use?
+distinctを指定することで重複したデータを除外してデータの取得が可能になる。
+例：select distinct カラム名, ... from テーブル名;
+
+
+What are the types of join and explain each?
+joinとexplainの型は何でしょうかという問題で合っているでしょうか？
+調べてみましたが、よくわかりません。解説等していただけると幸いです。
+
+
+What is a View in SQL?
+viewはテーブルから取得したいデータの条件を定義して独立したテーブルのように扱るようにしたもの。データ自体は持たず、元となったテーブルからデータを参照している。
+
+
+What is an Index in SQL?
+テーブルに格納されたデータの一部を取り出し検索用に最適化したもの。インデックスを設定することでデータの検索を高速に行うことができる。
+What is a relationship and what are they?
+結合のことでしょうか？2つのテーブルを１つに結合することだと思います。relationshipが訳せずよくわかりません。
+
+
+Difference between TRUNCATE, DELETE and DROP commands?
+TRUNCATEはテーブルに格納されているすべてのデータを削除する。DELETEよりも高速だがロールバックができない。
+DELETEはテーブルの情報を全削除または、条件指定で削除できる(where句)。ロールバックが可能。
+DROPはテーブル内のオブジェクトを完全に削除。ロールバックできない。テーブルの構造ごと一括で消したい時に使う。
+
+参照元：https://qiita.com/masapiko/items/cd4aef791608ea919485
+https://knocknote.jp/topics/2018/03/13t/
+
+※ロールバックとはデータの喪失、破損などが起きた際に、以前に正常に稼働していたある時点の状態に戻して復旧を試みることを指す。
+
+
+Why do we use SQL constraints? Which constraints we can use while creating a database in SQL?
+テーブルに格納するデータを限定する方法で正しいデータを追加したり、変更したりするために使う。
+制約の種類。
+UNIQUE:カラムの値を重複させない一意制約。
+NOT NULL:カラムの値をNULLにさせない制約
+PRIMARY kEY:レコードの識別に利用されるカラムに指定する制約。(UNIQUEとNOT NULL制約を合わせたようなもの。)
+DEFAULT:カラムの値を指定しなかった場合、デフォルト値を指定できる制約。
+AUTO_INCREMENT:自動で番号が入力される。
+FOREIGN KEY:外部キーは整合性を保ちたい列に設定する。複数のテーブルで関連付けしたい場合に使う。
+
+
+How do you add a column to a table?
+ALTER TABLE テーブル名　ADD　カラム名；
+
+
+How to select random rows from a table?
+10件のデータをランダムで取り出す場合
+SELECT * FROM テーブル名 ORDER BY rand() limit 0 10;
+
+
+Write a SQL SELECT query that only returns each name only once from a table?
+select distinct name from テーブル名;
+distinctを使ってテーブル名のnameカラムから重複のない名前を取り出す。
+
+
+Suppose a Student column has two columns, Name and Marks. How to get names and marks of the top three students.
+SELECT * FROM テーブル名 ORDER BY Marks Limit 3;
+order by MarksによってMarksのカラムをソートする。
+Limit ３で3件のデータだけ取り出すように限定。
+select * From テーブル名でトップ3名の生徒の情報を取り出す。
+
+
+What is schema?
+データベースと同義だと思います。
+参照元：https://enterprisezine.jp/article/detail/3257
