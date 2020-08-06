@@ -1,46 +1,44 @@
-from selenium import webdriver
-import requests
+import time
+from page import Page
 
 
 class Crawler(object):
+    def __init__(self, driver, page_store):
+        self.driver = driver
+        self.page_store = page_store
 
-    def __init__(self, data_store, reverse_index_queue, doc_index_queue):
-        self.data_store = data_store
-        self.reverse_index_queue = reverse_index_queue
-        self.doc_index_queue = doc_index_queue
-
-    def create_link(self, page):
-        """Create link based on url and contents."""
-
-    def crawl_page(self, page):
-        for link in page.link:
-            self.data_store.add_link_to_crawl(link)
-        page.full_text = self.create_full_text(page)
-        # self.data_store.remove_link_to_crawl(page.url)
-        # self.data_store.insert_crawled_link(page.url, page.signature)
-
-    def crawl(self):
-        pages = []
-        for title_h3 in driver.find_elements_by_xpath('//a/h3'):
+    # step1__title,snippet,URLを取得する。
+    def crawl_list_page(self, search_url, search_count):
+        self.driver.get(search_url)
+        result_pages = []
+        # 検索件数ようにあらかじめ変数countを0にする。
+        # 変数title_h3はtitleの取得
+        titles = self.driver.find_elements_by_xpath('//a/h3')
+        for count, title_h3 in enumerate(titles):
+            # URlの取得
             url_a = title_h3.find_element_by_xpath('..')
+            # snippetの取得
             snippet = title_h3.find_element_by_xpath('../../../div/div/span')
-            print(title_h3.text)
-            print(url_a.get_attribute('href'))
-            print(snippet.text)
-            page = Page(title, link, ...)
-            pages.append(page)
-            save_to_db(url, ti)
-            count += 1
-            if count == int(search_count):
+            # ここでのprintをDBにインサートさせる必要がある。。。
+            _page = Page(title_h3.text, snippet.text, '', url_a.get_attribute('href'))
+            result_pages.append(_page)
+            if count+1 == int(search_count):
                 break
-            time.sleep(1)
-        driver.close()
-        driver.quit()
 
-        # step2
-        for page in pages:
-            crawl_page(page)
-            save_to_db(full_text)
-            update_flag
-        return [page1, page2]
+            time.sleep(1)
+        return result_pages
+
+    def crawl_page(self):
         pass
+
+    def crawl(self, search_url, search_count):
+        # step1__title,snippet,URLを取得する。
+        crawled_pages = self.crawl_list_page(search_url, search_count)
+        # DBに保存するまで
+        self.page_store.save_list_pages(crawled_pages)
+        # # Pageの詳細を取得
+        # for _page in crawled_pages:
+        #     self.crawl_page(_page)
+        #     self.page_store.save_page(_page)
+
+
