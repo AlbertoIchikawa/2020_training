@@ -25,9 +25,10 @@ class PagesDataStore(object):
         #"insert into Page(title, snippet, URL_Chek_id_url) values('aeiou', 'aiueokakikukekosasisuseso',
         # 1)"
 
+    # title, snippet, URLをDBに保存させるためのメソッド。
     def save_list_pages(self, crawled_pages):
         for crawled_page in crawled_pages:
-            self.insert_crawled_page()
+            self.insert_crawled_page()  #インサートメソッド
             self.add_link_to_crawl()
 
     def save_page(self, page):
