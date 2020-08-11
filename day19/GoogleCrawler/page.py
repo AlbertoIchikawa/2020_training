@@ -1,3 +1,4 @@
+# このクラスの理解がいまいちわからない。Javaの研修でも同じクラスがあったはず。
 class Page(object):
 
     def __init__(self, title, snippet, full_text, url):

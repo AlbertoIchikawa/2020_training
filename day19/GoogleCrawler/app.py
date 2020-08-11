@@ -15,9 +15,9 @@ def main():
     search_url = 'https://www.google.com/search?q=' + key_word
     # seleniumを使ってchromeで検索する。l17=driverの配置を指定。l18=引数に検索キーワードを入れて実行。
     driver = webdriver.Chrome('C:\chromedriver_win32\chromedriver.exe')
-    crawler = Crawler()  # Crawlerクラスをインスタンス化
-    result = crawler.crawl(search_url, search_count)  # 検索URLと検索回数を引数で与える
-    print(result)
+    crawler = Crawler(driver)  # Crawlerクラスをインスタンス化
+    result = crawler.crawl(search_url, search_count)  # 検索URLと検索回数を引数で与え、クロールした結果を変数resultへ代入
+    print(result)  # リストの中身が文字列として出力されない。
     driver.close()
     driver.quit()
 

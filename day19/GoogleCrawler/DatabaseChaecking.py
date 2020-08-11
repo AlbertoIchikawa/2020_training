@@ -1,5 +1,6 @@
 import mysql.connector
 
+# DBの情報をまとめてある。
 if __name__ == '__main__':
     connect = mysql.connector.connect(user='Ichikawa',
                                       password='p0ladm1n',
@@ -15,6 +16,3 @@ if __name__ == '__main__':
     # url_chekにURLの情報を入れる。
     cursor.execute("""insert into url_chek(URL) values('aiueokakikukekosasisuseso')""")
 
-    connect.commit()
-    cursor.close()
-    connect.close()

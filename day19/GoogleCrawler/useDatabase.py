@@ -1,6 +1,7 @@
 import mysql.connector
 
 
+# DBの接続・切断をするためのクラス。
 class UseDatabase:
 
     def __init__(self, config: dict) -> None:
