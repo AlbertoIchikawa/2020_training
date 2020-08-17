@@ -1,0 +1,9 @@
+2020年8月17日
+SPA編(1)を参考に環境構築
+①作業ディレクトリを作成してDjangoをインストール
+②理解できていないがAPI化など、どこかで必要になると思ってdjnagorestframeworkをインストール
+③フロント側の環境構築をするためにnpm install --save vue-cliを実行
+④pycharmのterminalではvueが実行できず、コマンドラインを使ってfrontend用のプロジェクト作成
+⑤VuetifyとWebpackのインストールをクイックスタートを参照しながら実装
+⑥DjangoとVuetifyの環境構築以外で今回の課題の進め方がわからないので調査
+⑦DRFとmodels.py,urls.py,views.py,serializer.pyについて調査
