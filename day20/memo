@@ -7,3 +7,16 @@ SPA編(1)を参考に環境構築
 ⑤VuetifyとWebpackのインストールをクイックスタートを参照しながら実装
 ⑥DjangoとVuetifyの環境構築以外で今回の課題の進め方がわからないので調査
 ⑦DRFとmodels.py,urls.py,views.py,serializer.pyについて調査
+DjangoとVuetifyの環境構築まで完了。
+
+2020年8月18日
+Django+Webpack+Vue.js編を参考にrunserverしたときにDjangoではなくVuetifyを立ち上げる
+①昨日までだとVuetifyはVuetify、DjangoはDjangoでそれぞれ立ち上げている。
+②https://chichi1091.hatenablog.jp/entry/2018/02/24/233151サイトを参考に環境構築
+③pip install django-webpack-loader
+④npm init -f
+⑤npm install --save-dev webpack@3.11.0 webpack-bundle-tracker@0.2.1 vue@2.5.13
+⑥npm install --save-dev style-loader@0.20.2 css-loader@0.28.10
+⑦その他、手順にのっとって実装。その後エラーが出てSPA編を参考に進めていく。新しく作ったフォルダやファイルは可能な限り削除、frontendのモジュールだけ残った。
+⑧Django自体は立ち上げるのみでアプリケーションを作成する必要がない。Vuetifyから値を受け取りDBに参照して結果を返すのが役割。
+⑨まずはVuetifyとDjangoをつなげる(値を渡せる)ようにするためにAPI化というものに着手する。
