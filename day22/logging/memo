@@ -30,5 +30,8 @@ https://docs.python.org/ja/3/library/logging.html
 basicConfigにファイルパスを指定してログを出力させる。
 フォルダは作成する必要があるが、ログファイルは自動的に生成されるので便利
 
-
-
+ロギングロガー
+basicConfigでログレベルなどを設定できる。
+logging.getLogger(name) の name は、処理を実行したファイル名を出力してくれるので割と便利。
+基本的には、main 処理を記述したファイルに、basicConfig を設定。
+他のファイルは logger を設置して、個々のカスタマイズを加えていく開発が主流
