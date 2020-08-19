@@ -48,5 +48,10 @@ main処理以外のログ情報をファイルに出力するためにはハン�
 これでlogger_lessonを実行すればlogger_lesson2のログがlogger.logに記録される。
 
 
-
+ログのフィルタ
+1ログ専用クラスを作成し、logging.Filter の情報を継承させる
+2フィルタ条件を設定する
+3logger プロパティにフィルタ情報を追加する
+フィルタ情報に今回はpasswordという文字列が含まれていたらログ出力しないという設定。
+出力結果には'from main password = "test'が出力されていないので成功。
 
