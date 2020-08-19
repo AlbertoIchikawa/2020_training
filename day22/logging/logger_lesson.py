@@ -1,10 +1,10 @@
 import logging
 
-# ログレベルを DEBUG に変更
-logging.basicConfig(filename='logger.log', level=logging.DEBUG)
+# フォーマットを定義
+# levelnameにINFO、asctimeに今日の日付と時刻、messageに下記の文字列が表示される。
+formatter = '%(levelname)s : %(asctime)s : %(message)s'
 
-# 従来の出力
-logging.info('error{}'.format('outputting error'))
-logging.info('warning %s %s' % ('was', 'outputted'))
-# logging のみの書き方
-logging.info('info %s %s', 'test', 'test')
+# ログレベルを DEBUG に変更
+logging.basicConfig(level=logging.DEBUG, format=formatter)
+
+logging.info('%s %s', 'test', 'test')
