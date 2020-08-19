@@ -1,6 +1,7 @@
 #１．ファイル名は「test_対象のモジュール名.py」
 import unittest
-import calc
+from unittest import calc
+
 
 # ２．テストクラス名は「Testテスト対象のクラス名」
 # ３．テストクラスはunittest.TestCaseを継承する
