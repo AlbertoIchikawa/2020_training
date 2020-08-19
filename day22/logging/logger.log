@@ -1,3 +1,5 @@
 INFO:root:erroroutputting error
 INFO:root:warning was outputted
 INFO:root:info test test
+from logger_lesson2
+from logger_lesson2_debug

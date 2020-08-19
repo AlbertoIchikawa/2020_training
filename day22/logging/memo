@@ -17,8 +17,10 @@ Pythonのロギング機能を使うことで、いつどんな処理が実行�
 出力結果にrootとある、これはプログラムで最初に実行されるPythonファイルを指定している。
 ここではlogger_lesson.pyがrootとなる。rootが出力される処理をmain処理と呼ぶ。
 
+
 ログレベルの変更
 ログレベルはbasicConfigで変更することができる。
+
 
 ロギングのフォーマット
 ログのフォーマットを変更できるみたい。
@@ -30,8 +32,21 @@ https://docs.python.org/ja/3/library/logging.html
 basicConfigにファイルパスを指定してログを出力させる。
 フォルダは作成する必要があるが、ログファイルは自動的に生成されるので便利
 
+
 ロギングロガー
 basicConfigでログレベルなどを設定できる。
 logging.getLogger(name) の name は、処理を実行したファイル名を出力してくれるので割と便利。
 基本的には、main 処理を記述したファイルに、basicConfig を設定。
 他のファイルは logger を設置して、個々のカスタマイズを加えていく開発が主流
+
+
+ロギングハンドラ
+main処理に記述するbasicConfigのfilenameにログのパスを記述すれば、ログが書き込まれることは上記の通り。
+main処理以外のログ情報をファイルに出力するためにはハンドラを使う必要がある。
+ハンドラはmain処理以外のPythonファイルに書くのでlogger_lesson2.pyに書く。
+つまり、ファイルに書き込まれる情報は、常に logger を使う必要がある。
+これでlogger_lessonを実行すればlogger_lesson2のログがlogger.logに記録される。
+
+
+
+
