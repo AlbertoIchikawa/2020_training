@@ -55,3 +55,21 @@ main処理以外のログ情報をファイルに出力するためにはハン�
 フィルタ情報に今回はpasswordという文字列が含まれていたらログ出力しないという設定。
 出力結果には'from main password = "test'が出力されていないので成功。
 
+
+ロギングコンフィグ(ロギング設定をまとめて行う)
+dictConfigを使う方法
+dictConfigの説明
+version	スキーマのバージョンで現在は 1 しか有効ではない
+formatters	ログのフォーマットを設定する
+formatters/file	ログフォーマットの定義名を file と設定している(任意)
+formatters/file/format	file のログフォーマットを指定
+handlers	ハンドラを設定する
+handlers/file	ハンドラの定義名を file と設定している(任意)
+handlers/class	ハンドラで使用するモジュールを指定
+handlers/formatter	class で設定したモジュールの引数
+handlers/filename	同上(ログ出力先)
+handlers/backupCount	同上(ローテート数)
+handlers/when	同上(ローテートタイミング、ここではdaily)
+root	ルートロガーの設定
+root/level	ログに記録するロガーレベルを設定(ここではDEBUG以上のものは記録)
+root/handlers	使用するハンドラを設定
