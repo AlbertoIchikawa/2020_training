@@ -1,18 +1,30 @@
 <template>
-  <div>
+  <!-- <div> -->
+    <v-container>
+      <v-row justify="center">
+        <v-col cols=6>
+  <v-card outlined max-width="1100" height="300">
     <v-form>
       <v-text-field
-        v-model="username"
-        label="ログインID"
+        v-model="email"
+        label="メールアドレス"
+        :rules="[rules.required, rules.email]"
         required></v-text-field>
       <v-text-field
         v-model="password"
         label="パスワード"
+        :rules="[rules.required, rules.password]"
         required></v-text-field>
-      <v-btn @click="submit">ログイン</v-btn>
+        <div class="text-center">
+      <v-btn justify="center" @click="submit">ログイン</v-btn>
+      </div>
       <img :src="img" alt="">
     </v-form>
-  </div>
+  </v-card>
+  </v-col>
+  </v-row>
+  </v-container>
+  <!-- </div> -->
 </template>
 
 <script>
@@ -22,21 +34,29 @@ export default {
   name: 'Login',
   data () {
     return {
-      username: null,
-      password: null,
-      img: ''
+      email: '',
+      password: '',
+      img: '',
+      rules: {
+        required: value => !!value || 'Required.',
+        email: value => {
+          const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+          return pattern.test(value) || 'Invalid e-mail.'
+        },
+        password: value => value.length <= 20 || 'Max 20 characters'
+      }
     }
   },
   methods: {
     submit () {
       // alert('login!')
       axios.get('https://dog.ceo/api/breeds/image/random')
-      .then((res) => {
+        .then((res) => {
           console.log(res.data.message)
           this.img = res.data.message
         // Vue.set(this, name, res.data);
         // this.$emit('GET_AJAX_COMPLETE');
-      })
+        })
     }
   }
 }
