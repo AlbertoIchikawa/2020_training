@@ -1,0 +1,14 @@
+3時間の作業の後、新しくプロジェクトを作成
+mkdir plain-site(ディレクトリの作成)
+cd plain-site
+django-admin startproject project(プロジェクトの作成)
+pip install django(Djangoのインストール：順番が逆)
+python manage.py runserver(djangoの起動)
+pip install djangorestframework(rest frameworkのインストール)
+pip freeze > constraints.txt(インストール済みのライブラリをここに書き出し)
+npm install --save vue-cli
+vue init webpack frontend
+npm run dev
+クイックスタートでVuetifyとWebpackのインストール
+npm install vuetify
+npm install sass sass-loader fibers deepmerge -D
