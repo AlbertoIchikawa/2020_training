@@ -18,7 +18,6 @@
         <div class="text-center">
       <v-btn justify="center" @click="submit">ログイン</v-btn>
       </div>
-      <img :src="img" alt="">
     </v-form>
   </v-card>
   </v-col>
@@ -49,14 +48,18 @@ export default {
   },
   methods: {
     submit () {
-      // alert('login!')
-      axios.get('https://dog.ceo/api/breeds/image/random')
+      // 値を受け取るためのURLを記述するのか
+      axios.post('http://127.0.0.1:8000/login/', {
+        email: this.email,
+        password: this.password
+      })
         .then((res) => {
-          console.log(res.data.message)
-          this.img = res.data.message
-        // Vue.set(this, name, res.data);
-        // this.$emit('GET_AJAX_COMPLETE');
+          console.log(res.data)
         })
+        .catch(err => {
+          console.log('axiosGetError', err)
+        })
+        .finally(res => console.log('finally'))
     }
   }
 }

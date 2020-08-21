@@ -12,3 +12,26 @@ npm run dev
 クイックスタートでVuetifyとWebpackのインストール
 npm install vuetify
 npm install sass sass-loader fibers deepmerge -D
+pip install django-cors-headers
+pip install djangorestframework_camel_case
+
+
+migrate実行でDB作成
+まず、models.pyにテーブル内の情報となるカラム情報をコーディングする。models.py参照
+次にsetteingのdetabaseの箇所にドライバーを設定する→passwordやポート番号などの記入
+terminalでpython manage.py makemigrations ○○を実行する。
+そしてpython manage.py　migrate ○○を実行するとdetabaseが作成される。
+念の為にWorkbenchなどで確認する。
+terminal上で確認する方法。
+python manage.py shellを実行する。
+from クラス名.models import メソッド名を実行する。
+クラス名.objects.all()を実行して全件取得する。
+表示されるのはmodels.pyでコーディングしたreturnの戻り値。
+
+
+Vue+Djangoの接続確認
+vueファイルにaxios.get(url)でDjangoのフォルダにあるurls.py内のメソッドを呼び出す。
+そのためにurls.pyにはurlとメソッドをコーディングする。(例：path('login/', login.login))
+axios内のURLはurls.pyで呼び出したいURLを記入する。
+呼び出されたメソッドではrequestが行われデータの取得が行われる。
+
