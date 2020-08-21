@@ -2,8 +2,10 @@ from rest_framework.response import responses
 
 from .models import User
 from .serializers import UserSerializer
+from django.views.decorators.csrf import csrf_exempt
 
 
+@csrf_exempt
 def login(request):
     if request.method == 'POST':
         print('test')
