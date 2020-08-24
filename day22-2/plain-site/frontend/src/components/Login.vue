@@ -52,9 +52,12 @@ export default {
       axios.post('http://127.0.0.1:8000/login/', {
         email: this.email,
         password: this.password
+        // データ形式が正しくないJSONで渡されている。
+        // Jason→pythonでJSON形式を受け取る方法。
       })
         .then((res) => {
           console.log(res.data)
+          // call back 関数
         })
         .catch(err => {
           console.log('axiosGetError', err)

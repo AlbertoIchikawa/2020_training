@@ -1,5 +1,5 @@
 <template>
-<div>ようこそ</div>
+<div>{{email}}</div>
 </template>
 
 <script>
