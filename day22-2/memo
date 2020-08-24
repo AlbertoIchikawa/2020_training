@@ -35,3 +35,10 @@ vueファイルにaxios.get(url)でDjangoのフォルダにあるurls.py内の�
 axios内のURLはurls.pyで呼び出したいURLを記入する。
 呼び出されたメソッドではrequestが行われデータの取得が行われる。
 
+djangoからvueへの値渡し確認
+data = json.loads(request.body)
+json形式で入力値を取得する。
+クエリセットでDB検索を行う。
+取ってきた情報をserialize行う。
+Responseで値を返す。
+

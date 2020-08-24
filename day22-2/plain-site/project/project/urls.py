@@ -19,5 +19,5 @@ from login import login
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', login.login)
+    path('login/', login.LoginViewSet.as_view())
 ]

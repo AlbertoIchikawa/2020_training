@@ -5,9 +5,9 @@ from .models import User
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        field = (
-            'user_id',
+        fields = [
+            'id_user',
             'name',
             'email',
             'password'
-        )
+        ]
