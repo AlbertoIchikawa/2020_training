@@ -36,9 +36,20 @@ axios内のURLはurls.pyで呼び出したいURLを記入する。
 呼び出されたメソッドではrequestが行われデータの取得が行われる。
 
 djangoからvueへの値渡し確認
+@csrf_exemptはエラー回避のための記述
 data = json.loads(request.body)
+data['email']などでterminal上で入力した情報の受け取りを確認できる。
 json形式で入力値を取得する。
 クエリセットでDB検索を行う。
 取ってきた情報をserialize行う。
 Responseで値を返す。
 
+Djangoからvueにレスポンスした後の画面遷移やエラー処理
+①入力値エラーの場合
+　アラート表示でフォームをリセットする。
+　もしくは空文字かnullを代入してアラート表示後にバリデーションエラーにする。
+
+②ログイン成功の場合
+router.pushを書いて画面遷移先のURLと同時に渡したい値を送る
+homepage.vueのほうでdata関数の中にuserという変数を用意する。
+created関数の中で渡された情報を取得してuser変数の中に入れる。

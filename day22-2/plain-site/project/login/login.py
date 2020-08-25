@@ -16,6 +16,7 @@ class LoginViewSet(views.APIView):
         # 変数の中にrequestの情報を代入する。
         # JSON形式であること、その形式で取得することが大事。
         data = json.loads(request.body)
+        print(data['email'])
         user = generics.get_object_or_404(
           queryset=User.objects.all(),
           email=data['email'],  # dataの中のemailの情報を抽出

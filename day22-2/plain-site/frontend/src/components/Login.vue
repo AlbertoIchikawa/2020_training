@@ -1,5 +1,4 @@
 <template>
-  <!-- <div> -->
     <v-container>
       <v-row justify="center">
         <v-col cols=6>
@@ -23,7 +22,6 @@
   </v-col>
   </v-row>
   </v-container>
-  <!-- </div> -->
 </template>
 
 <script>
@@ -35,7 +33,6 @@ export default {
     return {
       email: '',
       password: '',
-      img: '',
       rules: {
         required: value => !!value || 'Required.',
         email: value => {
@@ -48,19 +45,23 @@ export default {
   },
   methods: {
     submit () {
-      // 値を受け取るためのURLを記述するのか
+      // 値を受け取るためのURLを記述する→実行したいメソッドを呼び出すためにURLを記述する
       axios.post('http://127.0.0.1:8000/login/', {
+        // emailとpasswordを渡してログイン判定を行う
         email: this.email,
         password: this.password
-        // データ形式が正しくないJSONで渡されている。
-        // Jason→pythonでJSON形式を受け取る方法。
       })
         .then((res) => {
           console.log(res.data)
-          // call back 関数
+          // homepageへ画面遷移と情報を渡す。
+          this.$router.push({name: 'HomePage', query: {obj: res.data}})
         })
         .catch(err => {
           console.log('axiosGetError', err)
+          // 画面遷移せずにアラート表示、入力値を残す。
+          this.email = ''
+          this.password = ''
+          alert('記入された情報が正しくありません。\nもう一度入力してください。')
         })
         .finally(res => console.log('finally'))
     }
