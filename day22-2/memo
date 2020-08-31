@@ -1,0 +1,55 @@
+3時間の作業の後、新しくプロジェクトを作成
+mkdir plain-site(ディレクトリの作成)
+cd plain-site
+django-admin startproject project(プロジェクトの作成)
+pip install django(Djangoのインストール：順番が逆)
+python manage.py runserver(djangoの起動)
+pip install djangorestframework(rest frameworkのインストール)
+pip freeze > constraints.txt(インストール済みのライブラリをここに書き出し)
+npm install --save vue-cli
+vue init webpack frontend
+npm run dev
+クイックスタートでVuetifyとWebpackのインストール
+npm install vuetify
+npm install sass sass-loader fibers deepmerge -D
+pip install django-cors-headers
+pip install djangorestframework_camel_case
+
+
+migrate実行でDB作成
+まず、models.pyにテーブル内の情報となるカラム情報をコーディングする。models.py参照
+次にsetteingのdetabaseの箇所にドライバーを設定する→passwordやポート番号などの記入
+terminalでpython manage.py makemigrations ○○を実行する。
+そしてpython manage.py　migrate ○○を実行するとdetabaseが作成される。
+念の為にWorkbenchなどで確認する。
+terminal上で確認する方法。
+python manage.py shellを実行する。
+from クラス名.models import メソッド名を実行する。
+クラス名.objects.all()を実行して全件取得する。
+表示されるのはmodels.pyでコーディングしたreturnの戻り値。
+
+
+Vue+Djangoの接続確認
+vueファイルにaxios.get(url)でDjangoのフォルダにあるurls.py内のメソッドを呼び出す。
+そのためにurls.pyにはurlとメソッドをコーディングする。(例：path('login/', login.login))
+axios内のURLはurls.pyで呼び出したいURLを記入する。
+呼び出されたメソッドではrequestが行われデータの取得が行われる。
+
+djangoからvueへの値渡し確認
+@csrf_exemptはエラー回避のための記述
+data = json.loads(request.body)
+data['email']などでterminal上で入力した情報の受け取りを確認できる。
+json形式で入力値を取得する。
+クエリセットでDB検索を行う。
+取ってきた情報をserialize行う。
+Responseで値を返す。
+
+Djangoからvueにレスポンスした後の画面遷移やエラー処理
+①入力値エラーの場合
+　アラート表示でフォームをリセットする。
+　もしくは空文字かnullを代入してアラート表示後にバリデーションエラーにする。
+
+②ログイン成功の場合
+router.pushを書いて画面遷移先のURLと同時に渡したい値を送る
+homepage.vueのほうでdata関数の中にuserという変数を用意する。
+created関数の中で渡された情報を取得してuser変数の中に入れる。

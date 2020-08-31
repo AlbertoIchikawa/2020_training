@@ -1,0 +1,75 @@
+参考URL：https://qiita.com/__init__/items/91e5841ed53d55a7895e
+参考URLの参考元URL：https://www.udemy.com/course/python-beginner/
+
+ロギングについて
+ロギングとは起こった出来事についての情報などを一定の形式で時系列に記録・蓄積すること。
+そのように記録されたデータのことを「ログ」（log）という。
+Pythonのロギング機能を使うことで、いつどんな処理が実行されどのような結果になったかをさかのぼって確認することができる。
+トラブルが発生した時にどんなエラーがどの箇所で発生したか把握できるので、後々の対応がしやすくなり便利。
+つまり履歴のこと。
+
+ログレベル
+1 CRITICAL
+2 ERROR
+3 WARNING
+4 INFO
+5 DEBUG
+出力結果にrootとある、これはプログラムで最初に実行されるPythonファイルを指定している。
+ここではlogger_lesson.pyがrootとなる。rootが出力される処理をmain処理と呼ぶ。
+
+
+ログレベルの変更
+ログレベルはbasicConfigで変更することができる。
+
+
+ロギングのフォーマット
+ログのフォーマットを変更できるみたい。
+https://docs.python.org/ja/3/library/logging.html
+
+
+ログをファイルに出力
+ログはファイルに出力して管理するみたい。
+basicConfigにファイルパスを指定してログを出力させる。
+フォルダは作成する必要があるが、ログファイルは自動的に生成されるので便利
+
+
+ロギングロガー
+basicConfigでログレベルなどを設定できる。
+logging.getLogger(name) の name は、処理を実行したファイル名を出力してくれるので割と便利。
+基本的には、main 処理を記述したファイルに、basicConfig を設定。
+他のファイルは logger を設置して、個々のカスタマイズを加えていく開発が主流
+
+
+ロギングハンドラ
+main処理に記述するbasicConfigのfilenameにログのパスを記述すれば、ログが書き込まれることは上記の通り。
+main処理以外のログ情報をファイルに出力するためにはハンドラを使う必要がある。
+ハンドラはmain処理以外のPythonファイルに書くのでlogger_lesson2.pyに書く。
+つまり、ファイルに書き込まれる情報は、常に logger を使う必要がある。
+これでlogger_lessonを実行すればlogger_lesson2のログがlogger.logに記録される。
+
+
+ログのフィルタ
+1ログ専用クラスを作成し、logging.Filter の情報を継承させる
+2フィルタ条件を設定する
+3logger プロパティにフィルタ情報を追加する
+フィルタ情報に今回はpasswordという文字列が含まれていたらログ出力しないという設定。
+出力結果には'from main password = "test'が出力されていないので成功。
+
+
+ロギングコンフィグ(ロギング設定をまとめて行う)
+dictConfigを使う方法
+dictConfigの説明
+version	スキーマのバージョンで現在は 1 しか有効ではない
+formatters	ログのフォーマットを設定する
+formatters/file	ログフォーマットの定義名を file と設定している(任意)
+formatters/file/format	file のログフォーマットを指定
+handlers	ハンドラを設定する
+handlers/file	ハンドラの定義名を file と設定している(任意)
+handlers/class	ハンドラで使用するモジュールを指定
+handlers/formatter	class で設定したモジュールの引数
+handlers/filename	同上(ログ出力先)
+handlers/backupCount	同上(ローテート数)
+handlers/when	同上(ローテートタイミング、ここではdaily)
+root	ルートロガーの設定
+root/level	ログに記録するロガーレベルを設定(ここではDEBUG以上のものは記録)
+root/handlers	使用するハンドラを設定

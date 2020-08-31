@@ -1,0 +1,9 @@
+Mysqlでスキーマとテーブルを作成し、適当な情報を事前にインサートしておく
+Djangoのsetting.pyのdatabaseの欄にMySQLの情報db名やport番号など接続に必要な情報を入力する
+models.pyにはテーブルと同じクラスを作り、テーブル内のカラムを反映させるコードを書く。
+変数名はカラム名に対応させること、引数にはprimarykeyなど必要なことを記入する。
+returnには返したい情報、例えば全てのカラムの情報など、ひとつのカラムなど返す。
+terminal上で「python manage.py shell」を実行させる。
+>>>が出たら「from アプリ名.models import クラス名」を入力して実行
+次に「クラス名.objects.all()」を実行して接続状況を確認できる。
+terminalにはreturnで返した情報が表示されるはず。
