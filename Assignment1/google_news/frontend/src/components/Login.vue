@@ -51,19 +51,16 @@ export default {
       })
         .then((res) => {
           console.log(res.data)
+          this.$router.push({name: 'HomePage', query: {obj: res.data}})
         })
         .catch(err => {
           console.log('axiosGetError', err)
+          this.email = ''
+          this.password = ''
+          alert('記入された情報が正しくありません。\nもう一度入力してください。')
         })
         .finally(res => console.log('finaly'))
     }
-  },
-  mounted () {
-    axios.get('https://dog.ceo/api/breeds/image/random')
-      .then((res) => {
-        console.log(res.data.message)
-        this.pic = res.data.message
-      })
   }
 }
 </script>

@@ -1,0 +1,59 @@
+SPA編に倣ってDjangoを設定していく。
+
+<ログイン機能の実装に向けて>
+FileからNew Projectで新しいプロジェクト作成。
+そこからmkdir　○○で新しいディレクトリを作成する。○○には任意のディレクトリ名を入れる。
+pip install djangoでDjangoをインストール
+django-admin startproject ○○で新規プロジェクトを作成する。○○にはプロジェクト名(ディレクトリ名)
+python manage.py startapp ○○でアプリを作成。○○にはアプリ名を入れる。
+settings.pyのINSTALLED_APPSにアプリ名を追加。
+pip install djangorestframeworkを実行する。
+settings.pyのINSTALLED_APPSに'rest_framework'を追加。
+serializeファイルを作成。
+frontend側でnpm install axios --saveを実行。
+Django側でpip install django-cors-headersを実行。
+これはDjango側から情報を送信するために必要。(らしい。)
+settings.pyに以下の内容を追加。
+インストールしたらINSTALLED＿APPSに'corsheaders',
+MIDDLEWAREに'corsheaders.middleware.CorsMiddleware',
+最後にCORS_ORIGIN_ALLOW_ALL = Trueを追加する。
+pip install djangorestframework_camel_caseを実行する。Djangoで推奨されているライブラリを追加する。
+settings.pyに以下の内容を追加する。
+REST_FRAMEWORK = {
+    'PAGE_SIZE': 100,
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+# === 以下を追加
+    'DEFAULT_RENDERER_CLASSES': (
+        'djangorestframework_camel_case.render.CamelCaseJSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ),
+    'DEFAULT_PARSER_CLASSES': (
+        'djangorestframework_camel_case.parser.CamelCaseJSONParser',
+        'rest_framework.parsers.FormParser',
+        'rest_framework.parsers.MultiPartParser'
+    ),
+# === ここまで
+}
+setting.pyに'django.middleware.common.CommonMiddleware',をMIDDLEWAREに追加する。
+CORS_ORIGIN_ALLOW_ALL = Trueを追加。
+アプリのディレクトリ内でloginViewsファイルを作成してログインAPIを設定する。
+①@csrf_exemptを設定して404エラーをなくす。
+②requestの情報をJSON形式で取得するためjson.loads(request.data)で変数へ代入する。
+③genericsとクエリセットを用いてデータベース内の情報をメアドとパスで抽出する。
+④抽出した内容をserializerクラスを使って形成して、それを変数へ入れる。
+
+
+ORMでデータベース作成
+Workbenchで事前にスキーマだけ作成する。
+models.pyでカラムを設定する。
+カラムを設定した次に下記のように記す。
+    class Meta:
+        db_table = 'user'
+    これでテーブルを作成する。userがテーブル名になる。
+setting.pyのDATABASE内でMySQLのドライバー設定する。
+念のためにpip install mysqlclientを実行する(おそらくこれが必要)
+python manage.py makemigration を実行する。
+データベースに反映させるための中間ファイルを作成するために行う。
+python manage.py migrateを実行する。
+これでデータベース内に反映させる。
+

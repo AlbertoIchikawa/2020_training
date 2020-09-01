@@ -16,6 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from news import loginViews
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('login/', loginViews.LoginViewSet.as_view())
 ]

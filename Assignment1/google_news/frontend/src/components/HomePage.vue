@@ -23,7 +23,12 @@ export default {
   name: 'HomePage',
   data () {
     return {
+      user: {}
     }
+  },
+  created () {
+    this.user = this.$router.query.obj
+    console.log(this.user)
   },
   methods: {
     search () {
