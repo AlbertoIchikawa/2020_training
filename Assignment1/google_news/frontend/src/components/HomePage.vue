@@ -10,15 +10,18 @@
     <v-toolbar-title align-center>ヘッドライン</v-toolbar-title>
     <v-spacer></v-spacer>
     <v-btn @click.stop="dialog = true"><v-avatar></v-avatar></v-btn>
-    <v-dialog
+    <div>{{user.data}}</div>
+    <!-- <v-dialog
     v-model="dialog"
     max-widht="200">
-    </v-dialog>
+    </v-dialog> -->
   </v-toolbar>
 </v-card>
 </template>
 
 <script>
+// import axios from 'axios'
+
 export default {
   name: 'HomePage',
   data () {

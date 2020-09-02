@@ -57,3 +57,10 @@ python manage.py makemigration を実行する。
 python manage.py migrateを実行する。
 これでデータベース内に反映させる。
 
+
+<RSS活用方法>
+参考URL
+https://codeloop.org/how-to-read-google-rss-feeds-in-python/
+https://note.nkmk.me/python-feedparser-tutorial/
+
+

@@ -3,6 +3,7 @@ Django==3.1
 django-cors-headers==3.5.0
 djangorestframework==3.11.1
 djangorestframework-camel-case==1.2.0
+feedparser==5.2.1
 mysqlclient==2.0.1
 pytz==2020.1
 sqlparse==0.3.1
