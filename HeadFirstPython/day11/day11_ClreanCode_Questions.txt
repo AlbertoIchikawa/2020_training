@@ -1,0 +1,29 @@
+本を読んで理解できた範囲でまとめました。
+
+
+Question: What is Good comments?
+
+InformativeComments:ソースコードの説明のためのコメント。
+LegalComments：copyrightやauthorshipはソースファイルの始めに書くことがある。
+Explanation of Intent：ソースコードの意図の説明。それを書いた理由など。
+Clarification：明確化。コードの意味を明確にするためコメントアウトで情報を補う。
+Warning of Consequences:ほかのプログラマーに対して警告をするためのコメント。
+
+
+
+
+Question: What is Bad comments?
+
+Mumbling：ぶつぶつ言う。
+RedundantComments：必要以上に冗長なコメント。
+MisleadingComments：誤解を招くコメントや正確性に欠けるコメント。
+MandatedComments：強制コメント。システムが自動的につけてくれるコメントなど。コードを難読化して誤解を招く可能性がある。
+JournalComments：ジャーナルコメント。冗長なものはダメ。
+NoiseComments：意味のない、無駄でうるさいコメント。つまり、ソースコードよりも文字数が多かったり、情報として成り立っていないものなど。
+PositionMarkers：例）// Actions //////////////////////////////////
+ClosingBraceComments：while文などで｛｝をクローズする時にコメントをする人がいるみたい。
+Commented-OutCode：一度書いたコードをコメントアウトして残しておくこと。
+TooMuchInformation：数行から数十行になるような長すぎるコメントは避ける。
+
+
+
