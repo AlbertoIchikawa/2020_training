@@ -57,7 +57,7 @@ export default {
           console.log('axiosGetError', err)
           this.email = ''
           this.password = ''
-          alert('記入された情報が正しくありません。\nもう一度入力してください。')
+          alert(err + '\n記入された情報が正しくありません。\nもう一度入力してください。')
         })
         .finally(res => console.log('finaly'))
     }

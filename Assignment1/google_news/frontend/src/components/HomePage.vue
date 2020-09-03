@@ -20,7 +20,7 @@
 </template>
 
 <script>
-// import axios from 'axios'
+import axios from 'axios'
 
 export default {
   name: 'HomePage',
@@ -32,6 +32,15 @@ export default {
   created () {
     this.user = this.$router.query.obj
     console.log(this.user)
+  },
+  mounted () {
+    axios.get('http://127.0.0.1:8000/test/')
+      .then((res) => {
+        console.log(res.data)
+      })
+      .catch((e) => {
+        alert(e)
+      })
   },
   methods: {
     search () {
