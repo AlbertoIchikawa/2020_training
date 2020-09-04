@@ -11,37 +11,88 @@ class HomeNewsSet(views.APIView):
 
     @csrf_exempt
     def get(self, request):
-        result = []
+        titles = []
+        urls = []
         url = 'https://news.google.com/news/rss/topstories?tab=rn&hl=ja&gl=JP&ceid=JP:ja'
         for entry in feedparser.parse(url).entries:
-            # print(entry.title)
-            result.append(entry.title)
-            pprint(entry)
-        return Response(result)
+            titles.append(entry.title)
+            urls.append(entry.link)
+        return Response(titles)
 
 
-# def parseRSS(rss_url):
-#     return feedparser.parse(rss_url)
-#
-#
-# def getHeadlines(rss_url):
-#     headlines = []
-#
-#     feed = parseRSS(rss_url)
-#     for news_item in feed['items']:
-#         headlines.append(news_item['title'])
-#     return headlines
-#
-#
-# all_headlines = []
-#
-# news_urls = {
-#     'googlenews': 'https://news.google.com/news/rss/?hl=en&amp;ned=us&amp;gl=US'
-# }
-#
-# for key, url in news_urls.items():
-#
-#     all_headlines.extend(getHeadlines(url))
-#
-# for hl in all_headlines:
-#     print(hl)
+class AbroadNewsSet(views.APIView):
+
+    @csrf_exempt
+    def get(self, request):
+        titles = []
+        url = 'https://news.google.com/news/rss/headlines/section/topic/WORLD?hl=ja&gl=JP&ceid=JP:ja'
+        for entry in feedparser.parse(url).entries:
+            titles.append(entry.title)
+        return Response(titles)
+
+
+class JapanNewsSet(views.APIView):
+
+    @csrf_exempt
+    def get(self, request):
+        titles = []
+        url = 'https://news.google.com/news/rss/headlines/section/topic/NATION?hl=ja&gl=JP&ceid=JP:ja'
+        for entry in feedparser.parse(url).entries:
+            titles.append(entry.title)
+        return Response(titles)
+
+
+class LocalNewsSet(views.APIView):
+
+    @csrf_exempt
+    def get(self, request):
+        titles = []
+        url = 'https://news.google.com/news/rss/headlines/section/geo/tokyo?hl=ja&gl=JP&ceid=JP:ja'
+        for entry in feedparser.parse(url).entries:
+            titles.append(entry.title)
+        return Response(titles)
+
+
+class BusinessNewsSet(views.APIView):
+
+    @csrf_exempt
+    def get(self, request):
+        titles = []
+        url = 'https://news.google.com/news/rss/headlines/section/topic/BUSINESS?hl=ja&gl=JP&ceid=JP:ja'
+        for entry in feedparser.parse(url).entries:
+            titles.append(entry.title)
+        return Response(titles)
+
+
+class ScienceNewsSet(views.APIView):
+    print("sss")
+
+    @csrf_exempt
+    def get(self, request):
+        titles = []
+        url = 'https://news.google.com/news/rss/headlines/section/topic/SCIENCE?hl=ja&gl=JP&ceid=JP:ja'
+        for entry in feedparser.parse(url).entries:
+            titles.append(entry.title)
+        return Response(titles)
+
+
+class GossipNewsSet(views.APIView):
+
+    @csrf_exempt
+    def get(self, request):
+        titles = []
+        url = 'https://news.google.com/news/rss/headlines/section/topic/ENTERTAINMENT?hl=ja&gl=JP&ceid=JP:ja'
+        for entry in feedparser.parse(url).entries:
+            titles.append(entry.title)
+        return Response(titles)
+
+
+class SportsNewsSet(views.APIView):
+
+    @csrf_exempt
+    def get(self, request):
+        titles = []
+        url = 'https://news.google.com/news/rss/headlines/section/topic/SPORTS?hl=ja&gl=JP&ceid=JP:ja'
+        for entry in feedparser.parse(url).entries:
+            titles.append(entry.title)
+        return Response(titles)

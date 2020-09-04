@@ -21,5 +21,12 @@ from news import loginViews, homeNewsViews
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', loginViews.LoginViewSet.as_view()),
-    path('test/', homeNewsViews.HomeNewsSet.as_view())
+    path('home/', homeNewsViews.HomeNewsSet.as_view()),
+    path('abroad/', homeNewsViews.AbroadNewsSet.as_view()),
+    path('japan/', homeNewsViews.JapanNewsSet.as_view()),
+    path('local/', homeNewsViews.LocalNewsSet.as_view()),
+    path('business/', homeNewsViews.BusinessNewsSet.as_view()),
+    path('science/', homeNewsViews.ScienceNewsSet.as_view()),
+    path('gossip/', homeNewsViews.GossipNewsSet.as_view()),
+    path('sports/', homeNewsViews.SportsNewsSet.as_view())
 ]

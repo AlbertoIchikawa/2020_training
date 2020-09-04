@@ -1,8 +1,9 @@
 <template>
+<v-container>
 <v-card outlined>
   <v-row justify="center">
     <v-col>
-        <img src="pic" alt="">
+        <img height="400px" width="400px" :src='this.pic' alt="">
         <v-form>
           <v-text-field
             v-model="email"
@@ -20,7 +21,7 @@
         </v-form>
     </v-col>
   </v-row>
-  </v-card>
+  </v-card></v-container>
 </template>
 
 <script>
@@ -61,6 +62,13 @@ export default {
         })
         .finally(res => console.log('finaly'))
     }
+  },
+  created () {
+    axios.get('https://dog.ceo/api/breeds/image/random')
+      .then((res) => {
+        console.log(res.data.message)
+        this.pic = res.data.message
+      })
   }
 }
 </script>
