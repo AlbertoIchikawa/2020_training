@@ -10,3 +10,10 @@ class User(models.Model):
 
     class Meta:
         db_table = 'user'
+
+
+# class News(models.Model):
+#     title = models.CharField('title', max_length=255)
+#
+#     class Meta:
+#         db_table = 'news'

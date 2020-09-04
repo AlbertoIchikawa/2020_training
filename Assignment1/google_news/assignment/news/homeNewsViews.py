@@ -4,17 +4,20 @@ import feedparser
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.response import Response
 from rest_framework import views
+# from .serializers import NewsSerializer
 
 
 class HomeNewsSet(views.APIView):
 
     @csrf_exempt
     def get(self, request):
+        result = []
         url = 'https://news.google.com/news/rss/topstories?tab=rn&hl=ja&gl=JP&ceid=JP:ja'
         for entry in feedparser.parse(url).entries:
             # print(entry.title)
+            result.append(entry.title)
             pprint(entry)
-        return Response(123)
+        return Response(result)
 
 
 # def parseRSS(rss_url):

@@ -11,3 +11,11 @@ class UserSerializer(serializers.ModelSerializer):
             'email',
             'password'
         )
+
+
+# class NewsSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = News
+#         fields = (
+#             'title'
+#         )
