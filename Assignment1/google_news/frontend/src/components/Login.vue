@@ -33,7 +33,7 @@ export default {
     return {
       email: '',
       password: '',
-      pic: '',
+      pic: 'https://publicdomainq.net/images/201712/21s/publicdomainq-0016994xwa.jpg',
       rules: {
         required: (value) => !!value || 'Required.',
         email: (value) => {
@@ -62,13 +62,6 @@ export default {
         })
         .finally(res => console.log('finaly'))
     }
-  },
-  created () {
-    axios.get('https://dog.ceo/api/breeds/image/random')
-      .then((res) => {
-        console.log(res.data.message)
-        this.pic = res.data.message
-      })
   }
 }
 </script>

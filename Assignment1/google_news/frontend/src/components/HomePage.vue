@@ -1,6 +1,15 @@
 <template>
 <v-container>
 <v-row>
+  <v-toolbar flat>
+    <v-btn icon @click="search" color="grey">
+        <v-icon >mdi-magnify</v-icon>
+      </v-btn>
+       <v-spacer></v-spacer>
+    <v-toolbar-title align-center>ヘッドライン</v-toolbar-title>
+     <v-spacer></v-spacer>
+     <v-btn color="#FF5F17" @click.stop="dialog = true">ユーザー</v-btn>
+ </v-toolbar>
   <v-col cols="12">
   <v-btn  @click="abroad">国際</v-btn>
   <v-btn @click="japan">日本</v-btn>

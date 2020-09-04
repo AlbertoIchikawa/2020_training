@@ -1,8 +1,6 @@
 <template>
-<v-card color="grey lighten-4"
-    flat
-    >
-  <v-toolbar dense>
+<v-container>
+  <v-toolbar flat>
     <v-btn icon @click="backToHP">
         <v-icon>mdi-keyboard-backspace</v-icon>
       </v-btn>
@@ -11,7 +9,7 @@
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
   </v-toolbar>
-</v-card>
+</v-container>
 </template>
 
 <script>
@@ -26,7 +24,7 @@ export default {
       this.$router.push('HomePage')
     },
     search () {
-      this.$router.push('news')
+      this.$router.push('HomePage')
     }
   }
 }
