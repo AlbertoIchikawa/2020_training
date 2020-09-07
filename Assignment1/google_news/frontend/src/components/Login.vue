@@ -1,6 +1,8 @@
 <template>
 <v-container>
-<v-card outlined>
+  <v-row >
+    <v-col align="center">
+<v-card width="1000px">
   <v-row justify="center">
     <v-col>
         <img height="400px" width="400px" :src='this.pic' alt="">
@@ -21,7 +23,7 @@
         </v-form>
     </v-col>
   </v-row>
-  </v-card></v-container>
+  </v-card></v-col></v-row></v-container>
 </template>
 
 <script>
@@ -58,7 +60,7 @@ export default {
           console.log('axiosGetError', err)
           this.email = ''
           this.password = ''
-          alert(err + '\n記入された情報が正しくありません。\nもう一度入力してください。')
+          alert('記入された情報が正しくありません。\nもう一度入力してください。')
         })
         .finally(res => console.log('finaly'))
     }
