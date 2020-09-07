@@ -90,9 +90,9 @@ DATABASES = {
         'PASSWORD': 'p0ladm1n',
         'HOST': '127.0.0.1',
         'PORT': '3306',
-        # 'TEST': {
-        #     'NAME': 'day20'
-        # }
+        'TEST': {
+            'NAME': 'day20'
+        }
     }
 }
 

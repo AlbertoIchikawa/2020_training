@@ -53,3 +53,16 @@ Djangoからvueにレスポンスした後の画面遷移やエラー処理
 router.pushを書いて画面遷移先のURLと同時に渡したい値を送る
 homepage.vueのほうでdata関数の中にuserという変数を用意する。
 created関数の中で渡された情報を取得してuser変数の中に入れる。
+
+unit test
+①適当にテストファイルを作成。
+②test_models.pyを作成。
+③settings.pyのdetabase欄にテスト用のdetabaseを作成する。
+④今回はpython manage.py testを実行してみるとエラーが発生。中にはすでにdetabaseが存在しているというエラー文。
+そして該当するテーブル名が存在しないというエラー文が発生。
+⑤解決策としては存在している場合、テスト用のdetabaseは削除してやり直した。
+テーブル名に関してはmodels.pyのテーブル名を記入するところのテーブル名が間違っていた。
+⑥models.pyのテーブル名を修正してPython manage.py testを実行するととりあえず動いた。
+⑦settings.pyのdetabaseのテストのnameをもとのdb名に設定。
+⑧実行するときはpython manage.py test --keepdbで実行する。--keepdbをつけることで、データベースの破棄を防ぐことができる。
+⑨login.pyのテストファイルを作成する。リクエストにテストデータを入れて値が返ってくるかどうかを確かめる。間違った値も確かめる。

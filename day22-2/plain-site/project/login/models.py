@@ -9,5 +9,5 @@ class User(models.Model):
     password = models.CharField('password', max_length=20)
 
     class Meta:
-        db_table = 'user'
+        db_table = 'login_user'
 
